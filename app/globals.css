@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #060c17;
+  --surface: #0d1929;
+  --card: #0f2040;
+  --card-2: #112448;
+  --border: #1a3256;
+  --border-hover: #2a4c7a;
+  --primary: #f0a500;       /* Amber — actions, highlights */
+  --primary-dim: rgba(240, 165, 0, 0.12);
+  --teal: #00d4b4;          /* Teal — success, AI elements */
+  --teal-dim: rgba(0, 212, 180, 0.10);
+  --violet: #a78bfa;        /* Violet — Physics */
+  --violet-dim: rgba(167, 139, 250, 0.10);
+  --red: #f87171;           /* Red — danger, wrong answers */
+  --red-dim: rgba(248, 113, 113, 0.10);
+  --green: #34d399;         /* Green — correct, mastered */
+  --green-dim: rgba(52, 211, 153, 0.10);
+  --text: #ccd6f6;
+  --muted: #6a82a0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 600;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface); 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: var(--card-2); 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover); 
+}
+
+/* Markdown prose styles for chat/lab rendering */
+.prose {
+  color: var(--text);
+}
+.prose h1, .prose h2, .prose h3 {
+  color: var(--text);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.prose p {
+  margin-bottom: 1em;
+}
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+.prose strong {
+  color: #fff;
+}
+.prose pre {
+  background-color: var(--card);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1em;
+  border: 1px solid var(--border);
+}
+.prose code {
+  font-family: var(--font-jetbrains-mono), monospace;
+  background-color: var(--card);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
