@@ -129,4 +129,4 @@ types/
 
 ## License
 
-MIT
+MIT made by Manish,Aakash & Shreya
