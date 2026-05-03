@@ -8,6 +8,7 @@ import { DayDetail } from '../../components/planner/DayDetail';
 import { EmptyState } from '../../components/ui/EmptyState';
 import { PlanDay } from '../../types';
 import { CalendarDays, Route } from 'lucide-react';
+import { apiFetch } from '../../lib/api';
 
 export default function Planner() {
   const { activePlan, setActivePlan } = useStore();
@@ -15,7 +16,7 @@ export default function Planner() {
 
   const fetchPlan = async () => {
     try {
-      const res = await fetch('/api/planner');
+      const res = await apiFetch('/api/planner');
       if (res.ok) {
         const data = await res.json();
         setActivePlan(data);

@@ -7,6 +7,7 @@ import { VoiceInput } from './VoiceInput';
 import { SubjectSelector } from './SubjectSelector';
 import { Send, Hash, Loader2 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
+import { apiFetch } from '../../lib/api';
 
 export function ChatWindow() {
   const { profile } = useStore();
@@ -76,7 +77,7 @@ export function ChatWindow() {
     setIsTyping(true);
 
     try {
-      const res = await fetch('/api/tutor', {
+      const res = await apiFetch('/api/tutor', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

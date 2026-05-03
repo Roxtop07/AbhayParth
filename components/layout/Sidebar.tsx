@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useStore } from '../../store/useStore';
 import { LayoutDashboard, Brain, CalendarDays, Dumbbell, Bot, Youtube, Menu, X } from 'lucide-react';
 import { useEffect } from 'react';
+import { apiFetch } from '../../lib/api';
 
 const MODULES = [
   { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -84,7 +85,7 @@ export function Sidebar() {
                   <p className="text-sm font-semibold text-white truncate">Target {profile?.exam || 'Exam'}</p>
                   <button 
                     onClick={async () => {
-                      await fetch('/api/auth/logout', { method: 'POST' });
+                      await apiFetch('/api/auth/logout', { method: 'POST' });
                       localStorage.removeItem('abhaypath_profile');
                       useStore.setState({ profile: null });
                       window.location.href = '/login';

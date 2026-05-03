@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
+import { apiFetch } from '../../lib/api';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -21,7 +22,7 @@ export default function RegisterPage() {
     setError('');
 
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await apiFetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, exam })
@@ -31,7 +32,7 @@ export default function RegisterPage() {
       if (!res.ok) throw new Error(data.error || 'Failed to register');
       
       // Auto-login
-      const loginRes = await fetch('/api/auth/login', {
+      const loginRes = await apiFetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, exam })

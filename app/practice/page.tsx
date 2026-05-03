@@ -6,6 +6,7 @@ import { QuestionCard } from '../../components/practice/QuestionCard';
 import { ResultAnalysis } from '../../components/practice/ResultAnalysis';
 import { Question } from '../../types';
 import { useStore } from '../../store/useStore';
+import { apiFetch } from '../../lib/api';
 
 export default function Practice() {
   const { profile } = useStore();
@@ -24,7 +25,7 @@ export default function Practice() {
     setIsGenerating(true);
     setConfig(genConfig);
     try {
-      const res = await fetch('/api/practice', {
+      const res = await apiFetch('/api/practice', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...genConfig, exam: profile?.exam || 'Competitive Exam' })
@@ -96,7 +97,7 @@ export default function Practice() {
     };
 
     // Save
-    await fetch('/api/practice', {
+    await apiFetch('/api/practice', {
        method: 'PUT',
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(results)

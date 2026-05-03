@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { VideoProcessor } from '../../components/lab/VideoProcessor';
 import { StructuredNotes } from '../../components/lab/StructuredNotes';
 import { LabNotes } from '../../types';
+import { apiFetch } from '../../lib/api';
 
 export default function Lab() {
   const [notes, setNotes] = useState<LabNotes | null>(null);
@@ -12,7 +13,7 @@ export default function Lab() {
   const handleProcess = async (url: string, language: string) => {
     setError('');
     try {
-      const res = await fetch('/api/lab', {
+      const res = await apiFetch('/api/lab', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url, language })

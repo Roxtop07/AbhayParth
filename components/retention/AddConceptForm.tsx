@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useStore } from '../../store/useStore';
 import { Bot, Save } from 'lucide-react';
+import { apiFetch } from '../../lib/api';
 
 export function AddConceptForm() {
   const { addConcept } = useStore();
@@ -18,7 +19,7 @@ export function AddConceptForm() {
     setIsSaving(true);
     try {
       const parsedTags = tags.split(',').map(t => t.trim()).filter(Boolean);
-      const res = await fetch('/api/concepts', {
+      const res = await apiFetch('/api/concepts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, subtopic, summary, tags: parsedTags })
@@ -41,7 +42,7 @@ export function AddConceptForm() {
     try {
       // Direct call to an internal route or use a simulated response if no route exists
        const prompt = `Topic: ${topic}\nSubtopic: ${subtopic}\nMy notes: ${summary}`;
-       const res = await fetch('/api/tutor', {
+       const res = await apiFetch('/api/tutor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
