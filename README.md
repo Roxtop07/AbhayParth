@@ -13,7 +13,7 @@ Core modules:
 - Retention Engine: SM-2 based concept review workflow
 - Study Lab: YouTube video to structured notes pipeline
 - Practice Arena: generated practice sets with analysis
-- Planner: 7-day schedule generation and session organization
+- Planner: 7-day schedule generation and session organization .
 
 ## Tech Stack
 
